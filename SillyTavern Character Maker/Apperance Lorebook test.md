@@ -222,6 +222,10 @@
 
 // Information|
 /*
+
+The variable names tempx (x is a number) will need to be changed to something appropriate.
+Variables named tempx.text will also not work, will need to be changed to something appropriate without the `.` either a descriptive one word or by using `_` as a spacer.
+
 Here is some information about what settings mean for the lorebook
 //selectiveLogic 0:AND ANY, 1:NOT ALL, 2:NOT ANY, 3:AND ALL|
 //position: 0:↑Char, 1:↓Char, 2:↑AN, 3:↓AN, 4:@D, 5:↑EM, 6:↓EM, 7:Outlet|
