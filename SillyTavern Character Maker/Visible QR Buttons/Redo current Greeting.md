@@ -142,9 +142,9 @@ Story start:
 :}|
 
 
-/message-edit message=1 await=true {{getvar::altGreeting}}|
+/message-edit message={{getvar::altGreetID}} await=true {{getvar::altGreeting}}|
 
-/swipes-list message=1|
+/swipes-list message={{getvar::altGreetID}}|
 /setvar key=altGreetings {{pipe}}|
 /addvar key=dataBaseNames altGreetings|
 

@@ -75,13 +75,13 @@
 	/addvar key=dataBaseNames {{var::variableName}}|
 :}|
 
-/messages names=off 2|
+/messages names=off {{getvar::taglineID}}|
 /let key=mess {{pipe}}|
 /ife (mess == '') {:
 	/sendas name={{char}} [{{getvar::persona}}]|
 :}|
 /else {:
-	/message-edit message=2 await=true [{{getvar::persona}}]|
+	/message-edit message={{getvar::taglineID}} await=true [{{getvar::persona}}]|
 :}|
 
 /:"CMC Logic.Save DataBase"|

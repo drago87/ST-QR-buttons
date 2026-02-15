@@ -1,16 +1,24 @@
 /wi-list-books all=true|
 /let key=lorebookList {{pipe}}|
 
+/let key=branch {{noop}}|
+/ife (beta != 'Yes') {:
+	/var key=branch main|
+:}|
+/else {:
+	/var key=branch Fetch-Files|
+:}|
+
 /db-list source=chat field=name |
 /let key=databaseList {{pipe}}|
 /setvar key=counter 0|
 
 /foreach {{getglobalvar::models}} {:
 	/ife ( 'CMC Generation Prompts {{var::item}}' not in lorebookList) {:
-		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/{{var::item}}/CMC%20Generation%20Prompts%20{{var::item}}.json|
+		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/{{var::item}}/CMC%20Generation%20Prompts%20{{var::item}}.json|
 		/let key=f {{pipe}}|
 		/addvar key=counter 1|
-		
+		/download
 		/ife ( 'CMC Generation Prompts {{var::item}}.json' not in databaseList){:
 			/db-add source=chat name="CMC Generation Prompts {{var::item}}.json" {{var::f}}|
 			/db-disable source=chat CMC Generation Prompts {{var::item}}.json|
@@ -22,7 +30,7 @@
 	:}|
 	
 	/ife ( 'CMC Information {{var::item}}' not in lorebookList) {:
-		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/{{var::item}}/CMC%20Information%20{{var::item}}.json|
+		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/{{var::item}}/CMC%20Information%20{{var::item}}.json|
 		/let key=f {{pipe}}|
 		/addvar key=counter 1|
 		
@@ -38,7 +46,7 @@
 :}|
 
 /ife ( 'CMC Variables' not in lorebookList) {:
-	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Variables.json |
+	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Variables.json |
 	/let key=f {{pipe}}|
 	/addvar key=counter 1|
 	
@@ -53,7 +61,7 @@
 :}|
 
 /ife ( 'CMC Questions' not in lorebookList) {:
-	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Questions.json |
+	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Questions.json |
 	/let key=f {{pipe}}|
 	/addvar key=counter 1|
 	
@@ -68,7 +76,7 @@
 :}|
 
 /ife ( 'CMC Rules' not in lorebookList) {:
-	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Rules.json |
+	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Rules.json |
 	/let key=f {{pipe}}|
 	/addvar key=counter 1|
 	
@@ -83,7 +91,7 @@
 :}|
 
 /ife ( 'CMC Templates' not in lorebookList) {:
-	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Templates.json |
+	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Templates.json |
 	/let key=f {{pipe}}|
 	/addvar key=counter 1|
 	
@@ -98,7 +106,7 @@
 :}|
 
 /ife ( 'CMC Static Variables' not in lorebookList) {:
-	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Static%20Variables.json |
+	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Static%20Variables.json |
 	/let key=f {{pipe}}|
 	/addvar key=counter 1|
 	
@@ -113,7 +121,7 @@
 :}|
 
 /ife ( 'CMC Guides' not in lorebookList) {:
-	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Guides.json |
+	/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Guides.json |
 	/let key=f {{pipe}}|
 	/addvar key=counter 1|
 	
@@ -131,7 +139,7 @@
 	/buttons labels=["Yes", "No"] Do you want to download the optional CMC Anatomy (WIP) lorebook?|
 	/let key=button {{pipe}}|
 	/ife (button == 'Yes') {:
-		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Anatomy.json |
+		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Anatomy.json |
 		/let key=f {{pipe}}|
 		/addvar key=counter 1|
 		

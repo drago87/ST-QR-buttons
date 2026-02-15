@@ -7,10 +7,48 @@
 /let key=qrList {{noop}}|
 /let key=typeGuide {{noop}}|
 
+/let key=branch {{noop}}|
+/ife (beta != 'Yes') {:
+	/var key=branch main|
+:}|
+/else {:
+	/var key=branch Fetch-Files|
+:}|
 
+/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/Version/Version.md |
+/let key=updatedVersion {{pipe}}|
+
+/let key=currentVersion {{noop}}|
+
+/db-list source=character field=name |
+/let key=a {{pipe}}|
+/ife ('Current Version' in a) {:
+	/db-get source=character  "Current Version"|
+	/var key=currentVersion {{pipe}}|
+:}|
+/ife ((currentVersion == '') or (updatedVersion != currentVersion)) {:
+
+	/buttons labels=["Yes", "No", "Changes"] <div>There is a new version.</div><div>Do you want to stop the script to update to the new version or see what's new?</div>|
+	/var key=selected_btn {{pipe}}|
+	/ife ( selected_btn == ''){:
+		/echo Aborting |
+		/abort
+	:}|
+	/ife (selected_btn == 'Changes') {:
+		/fetch https://raw.githubusercontent.com/drago87/ST-Character-Maker/refs/heads/{{var::branch}}/SillyTavern%20Character%20Maker/Version/Latest%20Update.md |
+		/popup {{var::updatedVersion}}{{newline}}{{pipe}}|
+	:}|
+:}|
+
+/len {{getglobalvar::promptOrder}}|
+/let key=promptOrderLen {{pipe}}|
+/ife ((promptOrder == '') or (promptOrderLen < 4)) {:
+	/setglobalvar key=promptOrder ["contexts", "examples", "task", "instructions"]|
+	/popup "Default order for the prompt set. If you want to change it press the 'CMC Menu' button.{{newline}}Default order: contexts, examples, task, instructions"|
+:}|
 
 /messages 0|
-/let firstMess {{pipe}}|
+/let key=firstMess {{pipe}}|
 /ife ( ('Installation Instructions' not in firstMess) and (continue != 'Yes')) {:
 	/buttons labels=["Yes", "No"] <div>Doing this will delete all progress. And all Chat Attachments.</div><div>Do you want to continue?</div>|
 	/var selected_btn {{pipe}}|
@@ -535,10 +573,36 @@ INSTRUCTION: Only respond in the given format.|
 /addvar key=dataBaseNames chatGroup|
 /addvar key=dataBaseNames wait|
 
+/ife (makeLoreBook != 'Yes') {:
+	/findentry field=comment file="CMC Templates" Character Template Standard|
+	/getentryfield file="CMC Templates" {{pipe}}|
+	/setvar key=char_template {{pipe}}|
+:}|
+/else {:
+	/findentry field=comment file="CMC Templates" Character Template Lorebook|
+	/getentryfield file="CMC Templates" {{pipe}}|
+	/setvar key=char_template {{pipe}}|
+:}|
+/message-edit message=0 await=true <h2 align='center'>Scenario Overview</h2>{{newline}}{{newline}}--ScenarioOverview--|
+/sendas name={{char}} {{getvar::char_template}}|
 
-/findentry field=comment file="CMC Templates" Character Template|
-/getentryfield file="CMC Templates" {{pipe}}|
-/message-edit message=0 await=true {{pipe}}|
+/buttons labels=["Yes", "No"] Are you using a vision capable LLM and if so do you want to upload a image of your character to help with Appearance and Outfit generation?|
+/setvar key=imageGen {{pipe}}|
+/setvar key=firstMessID 2|
+/setvar key=altGreetID 3|
+/setvar key=taglineID 4|
+/setvar key=imageID {{noop}}|
+/ife (imageGen == 'Yes') {:
+
+	/sendas name={{user}} Press the <img src="https://img.icons8.com/?size=100&id=X8KeZWFUUtu4&format=png&color=8E8484" style="width: 24px; height: 24px;"> icon above this message and select the character image you want to use. You may need to press the <img src="https://img.icons8.com/?size=100&id=36944&format=png&color=8E8484" style="width: 24px; height: 24px;"> for it to appear.|
+	/echo extendedTimeout=0 timeout=0 awaitDismissal=true Press to Continue|
+	/message-edit await=true Character Image|
+	/setvar key=imageID 2|
+	/setvar key=firstMessID 3|
+	/setvar key=altGreetID 4|
+	/setvar key=taglineID 5|	
+:}|
+
 /:"CMC Logic.JEDParse"|
 
 /:"CMC Logic.Save DataBase"|

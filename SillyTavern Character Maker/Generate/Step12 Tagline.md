@@ -311,9 +311,9 @@
 	/re-replace find="/--OutfitBottom--/g" replace="" {{pipe}}|
 	/setvar key=taglineSheet {{pipe}}|
 :}|
-/ife (outfitLegsDescription != '') {:
+/ife (outfitLegwearDescription != '') {:
 	/getvar key=taglineSheet|
-	/re-replace find="/--OutfitLegs--/g" replace="{{getvar::outfitLegsDescription}}" {{pipe}}|
+	/re-replace find="/--OutfitLegwear--/g" replace="{{getvar::outfitLegwearDescription}}" {{pipe}}|
 	/setvar key=taglineSheet {{pipe}}|
 :}|
 /ife (outfitShoesDescription != '') {:
@@ -706,11 +706,11 @@
 	/setvar key=tagline {{pipe}}|
 :}|
 
-/messages names=off 2|
+/messages names=off {{getvar::taglineID}}|
 /let key=mess {{pipe}}|
 /ife (mess == '') {:
 	/sendas name={{char}} {{getvar::tagline}}
 :}|
 /else {:
-	/message-edit message=2 await=true {{getvar::tagline}}|
+	/message-edit message={{getvar::taglineID}} await=true {{getvar::tagline}}|
 :}|

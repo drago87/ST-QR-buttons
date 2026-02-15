@@ -648,6 +648,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookItems index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookItems index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -657,6 +666,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookItems index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookItems index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 
@@ -762,6 +778,15 @@
 			/:"CMC Logic.GenerateWithPrompt"|
 			/setvar key={{var::variableName}} {{getvar::output}}|
 		:}|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookItems index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookItems index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+		
 		/addvar key=dataBaseNames {{var::variableName}}|
 		/flushvar output|
 		/flushvar guidance|
@@ -771,6 +796,13 @@
 	:}|
 	/else {:
 		/addvar key=dataBaseNames {{var::variableName}}|
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookItems index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookItems index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
 	:}|
 :}|
 /else {:
@@ -778,6 +810,22 @@
 	/addvar key=dataBaseNames itemNames|
 	/setvar key=itemDetails None|
 	/addvar key=dataBaseNames itemDetails|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookItems index=itemNames|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=itemNames|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookItems index=itemNames {{getvar::tempLore}}|
+	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookItems index=itemDetails|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=itemDetails|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookItems index=itemDetails {{getvar::tempLore}}|
+	:}|
 :}|
 
 

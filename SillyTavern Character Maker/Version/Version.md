@@ -1,2 +1,2 @@
-<div>Version 0.5<div>
-</div>Update Date: 2026-01-18</div>
+<div>Version 0.6<div>
+</div>Update Date: 2026-02-15</div>

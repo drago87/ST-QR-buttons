@@ -62,7 +62,7 @@ parsedMakeup
 outfitNeckDescription
 outfitTopDescription
 outfitBottomDescription
-outfitLegsDescription
+outfitLegwearDescription
 outfitShoesDescription
 outfitUnderwearTopDescription - Can be Skip if appearanceBreasts = None
 outfitUnderwearBottomDescription

@@ -47,7 +47,12 @@ Step12 Tagline
 /elseif ( stepVar == 'Step3') {:
 	/ife (stepDone == 'Yes') {:
 		//Load Step4|
-		/:"CMC Generate.Step4 Generate Outfit"|
+		/ife (makeLoreBook != 'Yes') {:
+			/:"CMC Generate.Step4 Generate Outfit CharSheet"|
+		:}|
+		/else {:
+			/:"CMC Generate.Step4 Generate Outfit Lorebook"|
+		:}|
 	:}|
 	/else {:
 		//Load Step3|
@@ -61,7 +66,12 @@ Step12 Tagline
 	:}|
 	/else {:
 		//Load Step4|
-		/:"CMC Generate.Step4 Generate Outfit"|
+		/ife (makeLoreBook != 'Yes') {:
+			/:"CMC Generate.Step4 Generate Outfit CharSheet"|
+		:}|
+		/else {:
+			/:"CMC Generate.Step4 Generate Outfit Lorebook"|
+		:}|
 	:}|
 :}|
 /elseif ( stepVar == 'Step5') {:

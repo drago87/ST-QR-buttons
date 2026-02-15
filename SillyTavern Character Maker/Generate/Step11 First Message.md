@@ -141,13 +141,14 @@ Story start:
 	/addvar key=dataBaseNames {{var::variableName}}|
 :}|
 
-/messages names=off 1|
+
+/messages names=off {{getvar::firstMessID}}|
 /let key=mess {{pipe}}|
 /ife (mess == '') {:
 	/sendas name={{char}} {{getvar::firstMessage}}
 :}|
 /else {:
-	/message-edit message=1 await=true {{getvar::firstMessage}}|
+	/message-edit message={{getvar::firstMessID}} await=true {{getvar::firstMessage}}|
 :}|
 
 /:"CMC Logic.Save DataBase"|

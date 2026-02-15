@@ -94,6 +94,16 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	//Reccomended variable name: loreBook+what is generated. Example: loreBookOutfit|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=CHANGE_THIS_TO_THE_NAME_OF_THE_VARIABLE_YOU_WANT_TO_SAVE_IT_AS index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=CHANGE_THIS_TO_THE_NAME_OF_THE_VARIABLE_YOU_WANT_TO_SAVE_IT_AS index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -103,4 +113,11 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=CHANGE_THIS_TO_THE_NAME_OF_THE_VARIABLE_YOU_WANT_TO_SAVE_IT_AS index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=CHANGE_THIS_TO_THE_NAME_OF_THE_VARIABLE_YOU_WANT_TO_SAVE_IT_AS index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|

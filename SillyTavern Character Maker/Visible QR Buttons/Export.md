@@ -94,11 +94,14 @@ Each rule is **mandatory** — do not simplify, guess, or loosely interpret. Mat
 	/addvar key=strAltGreet "]"|
 :}|
 
+/messages names=off 0|
+/setvar key=scenario {{pipe}}|
+
 /findentry field=comment file="CMC Templates" "Character Card Template"|
 /getentryfield field=content file="CMC Templates" {{pipe}}|
 /re-replace find="/--CharName--/g" replace="{{getvar::firstName}}" {{pipe}}|
 /re-replace find="/--Summary--/g" replace="" {{pipe}}|
-/re-replace find="/--Scenario--/g" replace="" {{pipe}}|
+/re-replace find="/--Scenario--/g" replace="{{getvar::scenario}}" {{pipe}}|
 /re-replace find="/--Example_Dial--/g" replace="" {{pipe}}|
 /re-replace find="/--Main_Prompt--/g" replace="{{var::postHist}}" {{pipe}}|
 /re-replace find="/--Post_Hist--/g" replace="" {{pipe}}|

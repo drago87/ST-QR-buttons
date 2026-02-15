@@ -257,16 +257,7 @@
 				
 				// 1. Precise State Triggers (Subject + State + Slot) |
 				// We use your pronouns to cover all bases |
-				/let key=primKey [
-				    "{{getvar::firstName}} is naked", 
-				    "{{getvar::firstName}} is nude", 
-				    "{{getvar::firstName}} is bare", 
-				    "{{getvar::subjPronoun}} is naked",
-				    "{{getvar::subjPronoun}} is nude",
-				    "{{getvar::firstName}} has nothing on {{getvar::possAdjPronoun}} {{var::displaySlot}}",
-				    "{{getvar::subjPronoun}} has nothing on {{getvar::possAdjPronoun}} {{var::displaySlot}}",
-				    "{{getvar::firstName}}'s {{var::displaySlot}} is bare"
-				]|
+				/let key=primKey ["{{getvar::firstName}} is naked", "{{getvar::firstName}} is nude", "{{getvar::firstName}} is bare", "{{getvar::subjPronoun}} is naked", "{{getvar::subjPronoun}} is nude", "{{getvar::firstName}} has nothing on {{getvar::possAdjPronoun}} {{var::displaySlot}}", "{{getvar::subjPronoun}} has nothing on {{getvar::possAdjPronoun}} {{var::displaySlot}}", "{{getvar::firstName}}'s {{var::displaySlot}} is bare"]|
 				
 				// 2. Action Triggers (Subject/Verb/Item) |
 				// We loop through the items to create specific removal sentences |
@@ -638,6 +629,9 @@
 		            /setvar key=templateCop {{pipe}}|
 		            /re-replace find="/--sticky--/g" replace="10" {{getvar::templateCop}}|
 		            /setvar key=templateCop {{pipe}}|
+		            /re-replace find="/--depth--/g" replace="null" {{getvar::templateCop}}|
+				    /setvar key=templateCop {{pipe}}|
+				    /re-replace find="/--role--/g" replace="null" {{getvar::templateCop}}|
 					
 		            /ife (lorebookIndex != 0) {: /addvar key=createdLorebook "," :}|
 		            /addvar key=createdLorebook {{getvar::templateCop}}|

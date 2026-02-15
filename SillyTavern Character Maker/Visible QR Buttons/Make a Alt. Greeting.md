@@ -131,9 +131,9 @@ Story start:
 :}|
 
 
-/swipes-add message=1 {{getvar::altGreeting}}|
+/swipes-add message=3 {{getvar::altGreeting}}|
 
-/swipes-list message=1|
+/swipes-list message=3|
 /setvar key=altGreetings {{pipe}}|
 /addvar key=dataBaseNames altGreetings|
 

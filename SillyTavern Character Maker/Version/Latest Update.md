@@ -12,8 +12,10 @@
 	    Latest changes and notes:
 		<ul style="margin:8px 0 0 16px; padding:0; list-style-type:disc; text-align:left;">
 		<div style="margin-bottom: 1.2em;">⚠️ most of this is untested but should work in teory. If you find a bug please report it here or on Discord (Prefer Discord)</div>
-		<li>Added a update check to the "New Character" scropt.</li>
-		<li>Added the Optional Outfits Lorebook <a href="https://github.com/drago87/ST-Character-Maker/blob/Fetch-Files/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Anatomy.json" target="_blank" rel="noopener" style="color:#64c8ff;text-decoration:none;font-weight:500;">CMC Outfits</a> (Not fully implemented yet.)</li>
+		<li>Moved beta branch to main on github and have updated files to reflect that.</li>
+		<li>Updated the instructions with the new links, instructions for debug and  beta usage.</li>
+		<li>Added a update check to the "New Character" script.</li>
+		<li>Added the Optional Outfits Lorebook <a href="https://github.com/drago87/ST-Character-Maker/blob/main/SillyTavern%20Character%20Maker/LoreBooks/General/CMC%20Anatomy.json" target="_blank" rel="noopener" style="color:#64c8ff;text-decoration:none;font-weight:500;">CMC Outfits</a> (Not fully implemented yet.)</li>
 		<li>Updated the "CMC Guides" with a chatGPT message to generate outfits.</li>
 		<li>Started to add logic for making the character sheet into a lorebook (Instead of having everything about the character in the Character Description you will have the option to save it as a Lorebook. This will in most cases save tokens when playing with the generated character.)
 		<ul>
@@ -41,6 +43,11 @@
 		<li>Added "Prompts" and "Information" lorebook for DeepSeek models (Still a copy of the EsotericSage)</li>
 		<li>Added "Model Role" and "Output Trigger" to the "Prompts" lorebooks ("Model Role" and "Output Trigger" is empty for the old lorebooks EsotericSage have "Output Trigger" built into the "Instruction" part of the prompts)</li>
 		<li>Added a option in the CMC Menu to Enable **XML Tags** for the prompts (Recommended for DeepSeek models)</li>
+		<li>Added Logic to use a Vision Model to help with Appearance and Outfit generation</li>
+		<li>Removed the Quantization from the model name.</li>
+		<li>Added generation for Socks and removed it from footwear</li>
+		<li>Renamed the variable 'outfitLegs' to 'outfitLegwear' and 'outfitLegsDescription' to 'outfitLegwearDescription'</li>
+		<li>Split 'Pubic Hair Style' (CMC Variables) into 2 'Cock Pubic Hair Style' and 'Pussy Pubic Hair Style'</li>
 		</ul>
 	
 	</div>

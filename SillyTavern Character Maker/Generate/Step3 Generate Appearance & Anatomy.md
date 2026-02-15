@@ -37,6 +37,12 @@
 		/abort
 	:}|
 :}|
+/ife (unitType == 'Metric') {:
+	/setvar key=unitTypeShort cm|
+:}|
+/else {:
+	/setvar key=unitTypeShort inch|
+:}|
 
 /ife ((characterArchetype == 'Anthropomorphic') or (characterArchetype == 'Beastkin') or (characterArchetype == 'Animalistic') or (characterArchetype == 'Pokémon') or (characterArchetype == 'Digimon')) {:
 	/ife (coveringType == '') {:
@@ -663,7 +669,7 @@
 	    :}|
 	:}|
 	
-	/ife ((hairStyle == '') or (skip == 'Update')) {:
+	/ife ((hairStyleSelected == '') or (skip == 'Update')) {:
 		/buttons labels=["Yes", "No"] Do you want to set a hairstyle?|
 		/var key=do {{pipe}}|
 		/ife (do == '') {:
@@ -1610,10 +1616,172 @@
 :}|
 
 //**Pussy**|
-/var key=do No|
-/var key=variableName "appearancePussy"|
 /ife ((gender == 'Female') or (futanari == 'Yes')) {:
+	//Pussy Depth|
+	/var key=do No|
+	/var key=variableName "pussyDepth"|
+	/ife ({{var::variableName}} == '') {:
+	    /var key=do Yes|
+	:}|
+	/elseif (skip == 'Update') {:
+	    /getvar key={{var::variableName}}|
+	    /buttons labels=["Yes", "No"] Do you want to set or redo {{var::variableName}} (current value: {{pipe}})?|
+	    /var key=do {{pipe}}|
+	    /ife (do == '') {:
+	        /echo Aborting |
+	        /abort
+	    :}|
+	:}|
+	/ife ( do == 'Yes' ) {:
+		/setvar key=genSettings {}|
+		/setvar key=genSettings index=wi_book_key "Pussy Depth"|
+		/setvar key=genSettings index=genIsList Yes|
+		/setvar key=genSettings index=genAmount 8|
+		/setvar key=genSettings index=inputIsList No|
+		/setvar key=genSettings index=genIsSentence No|
+		/setvar key=genSettings index=needOutput No|
+		/setvar key=genSettings index=outputIsList No|
+		/setvar key=genSettings index=useContext Yes|
+		/setvar key=extra []|
+		/:"CMC Logic.Get Basic Type Context"|
+		/ife (extra != '') {:
+			/setvar key=genSettings index=contextKey {{getvar::extra}}|
+		:}|
+		/flushvar extra|
+		/wait {{getvar::wait}}|
+		
+		/getvar key=genSettings index=inputIsList|
+		/let key=inputIsList {{pipe}}|
+		/getvar key=genSettings index=inputIsList|
+		/let key=outputIsList {{pipe}}|
+		
+		
+		/ife ((inputIsList == 'Yes') or (outputIsList == 'Yes')) {:
+			/setvar as=array key={{var::variableName}} []|
+		:}|
+		/else {:
+			/setvar as=string key={{var::variableName}} {{noop}}|
+		:}|
 	
+		/setvar key=genSettings index=buttonPrompt What is the depth of {{getvar::firstName}}'s pussy? (From the entrence to the entrance of the cervix)|
+		
+		//[[Generate with Prompt]]|
+		
+		/:"CMC Logic.GenerateWithPrompt"|
+		/ife (unitType == 'Metric') {:
+			/setvar key={{var::variableName}} {{getvar::output}} cm|
+		:}|
+		/else {:
+			/setvar key={{var::variableName}} {{getvar::output}} inch|
+		:}|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookAppearance index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookAppearance index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+	
+		/addvar key=dataBaseNames {{var::variableName}}|
+		/flushvar output|
+		/flushvar guidance|
+		/flushvar genOrder|
+		/flushvar genContent|
+		/flushvar genSettings|
+	:}|
+	/else {:
+		/addvar key=dataBaseNames {{var::variableName}}|
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookAppearance index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookAppearance index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+	:}|
+	
+	//Pussy Accomendation|
+	/var key=do No|
+	/var key=variableName "pussyStretch"|
+	/ife ({{var::variableName}} == '') {:
+	    /var key=do Yes|
+	:}|
+	/elseif (skip == 'Update') {:
+	    /getvar key={{var::variableName}}|
+	    /buttons labels=["Yes", "No"] Do you want to set or redo {{var::variableName}} (current value: {{pipe}})?|
+	    /var key=do {{pipe}}|
+	    /ife (do == '') {:
+	        /echo Aborting |
+	        /abort
+	    :}|
+	:}|
+	/ife ( do == 'Yes' ) {:
+		/setvar key=genSettings {}|
+		/setvar key=genSettings index=wi_book_key "Pussy Stretch"|
+		/setvar key=genSettings index=genIsList Yes|
+		/setvar key=genSettings index=genAmount 8|
+		/setvar key=genSettings index=inputIsList No|
+		/setvar key=genSettings index=genIsSentence No|
+		/setvar key=genSettings index=needOutput No|
+		/setvar key=genSettings index=outputIsList No|
+		/setvar key=genSettings index=useContext Yes|
+		/setvar key=extra []|
+		/:"CMC Logic.Get Basic Type Context"|
+		/ife (extra != '') {:
+			/setvar key=genSettings index=contextKey {{getvar::extra}}|
+		:}|
+		/flushvar extra|
+		/wait {{getvar::wait}}|
+		
+		/getvar key=genSettings index=inputIsList|
+		/let key=inputIsList {{pipe}}|
+		/getvar key=genSettings index=inputIsList|
+		/let key=outputIsList {{pipe}}|
+		
+		
+		/ife ((inputIsList == 'Yes') or (outputIsList == 'Yes')) {:
+			/setvar as=array key={{var::variableName}} []|
+		:}|
+		/else {:
+			/setvar as=string key={{var::variableName}} {{noop}}|
+		:}|
+	
+		/setvar key=genSettings index=buttonPrompt What is the stretch of {{getvar::firstName}}'s pussy? (How mutch can the pussy Stretch before it starts to hurt)|
+		
+		//[[Generate with Prompt]]|
+		
+		/:"CMC Logic.GenerateWithPrompt"|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookAppearance index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookAppearance index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+	
+		/addvar key=dataBaseNames {{var::variableName}}|
+		/flushvar output|
+		/flushvar guidance|
+		/flushvar genOrder|
+		/flushvar genContent|
+		/flushvar genSettings|
+	:}|
+	/else {:
+		/addvar key=dataBaseNames {{var::variableName}}|
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookAppearance index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookAppearance index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+	:}|
+	
+	//Pussy Apperance|
+	/var key=do No|
+	/var key=variableName "appearancePussy"|
 	/ife ({{var::variableName}} == '') {:
 	    /var key=do Yes|
 	:}|
@@ -1778,16 +1946,16 @@
 		    :}|
 		:}|
 		
-		/ife ((pubicHair == '') or (skip == 'Update')) {:
-			/findentry field=comment file="CMC Variables" "Pubic Hair Style"|
+		/ife ((pussypubicHair == '') or (skip == 'Update')) {:
+			/findentry field=comment file="CMC Variables" "Pussy Pubic Hair Style"|
 			/let key=wi_uid {{pipe}}|
 			/getentryfield field=content file="CMC Variables" {{var::wi_uid}}|
 			/let key=list {{pipe}}|
 			/split find="---" {{var::list}}|
 			/var key=list {{pipe}}|
 			/buttons labels={{var::list}} What is the status of {{getvar::firstName}}'s pubic hair?|
-			/setvar key=pubicHair {{pipe}}|
-			/ife (pubicHair == '') {:
+			/setvar key=pussypubicHair {{pipe}}|
+			/ife (pussypubicHair == '') {:
 		        /echo Aborting |
 		        /abort
 		    :}|
@@ -1833,8 +2001,8 @@
 		/ife (externalVulvaState != 'Skip') {:
 			/addvar key=extra "- External Vulva State: {{getvar::externalVulvaState}}"|
 		:}|
-		/ife (pubicHair != 'Skip') {:
-			/addvar key=extra "- Pubic Hair Style: {{getvar::pubicHair}}"|
+		/ife (pussypubicHair != 'Skip') {:
+			/addvar key=extra "- Pussy Pubic Hair Style: {{getvar::pussypubicHair}}"|
 		:}|
 		/ife (futanari == 'Yes') {:
 			/addvar key=extra "Important: {{getvar::firstName}} is a futanari, so {{getvar::subjPronoun}} has both a pussy and a cock."|
@@ -2045,6 +2213,20 @@
 		        /abort
 		    :}|
 		:}|
+		/ife ((cockpubicHair == '') or (skip == 'Update')) {:
+			/findentry field=comment file="CMC Variables" "Cock Pubic Hair Style"|
+			/let key=wi_uid {{pipe}}|
+			/getentryfield field=content file="CMC Variables" {{var::wi_uid}}|
+			/let key=list {{pipe}}|
+			/split find="---" {{var::list}}|
+			/var key=list {{pipe}}|
+			/buttons labels={{var::list}} What is the status of {{getvar::firstName}}'s pubic hair?|
+			/setvar key=cockpubicHair {{pipe}}|
+			/ife (cockpubicHair == '') {:
+		        /echo Aborting |
+		        /abort
+		    :}|
+		:}|
 		/setvar key=genSettings {}|
 		/setvar key=genSettings index=wi_book_key "Appearance Cock"|
 		/setvar key=genSettings index=genIsList No|
@@ -2068,6 +2250,9 @@
 		:}|
 		/ife (testicularPosition != 'Skip') {:
 			/addvar key=extra "- Testicular Position: {{getvar::testicularPosition}}"|
+		:}|
+		/ife (cockpubicHair != 'Skip') {:
+			/addvar key=extra "- Cock Pubic Hair Style: {{getvar::cockpubicHair}}"|
 		:}|
 		/addvar key=extra "- Species Group: {{getvar::speciesGroup}}"|
 		/addvar key=extra "- Animal Base: {{getvar::animalBase}}"|
@@ -2663,6 +2848,146 @@
 	/setvar key=parsedAppearanceTraits None|
 :}|
 /addvar key=dataBaseNames parsedAppearanceTraits|
+
+
+/ife (makeLoreBook == 'Yes') {:
+	/setvar key=appearance_obj {}|
+	/setvar key=appearance_obj index=unitType {{getvar::unitType}}|
+	
+	/ife ((appearanceFeatures != '') and (appearanceFeatures != 'none')) {:
+		/setvar key=features_arr []|
+		/let key=appearance_obj_features {}|
+		/foreach {{getvar::appearanceFeatures}} {:
+			/var key=appearance_obj_features index=name {{var::item}}|
+			
+			/getvar key=appearanceFeaturesTypes index={{var::index}}|
+			/var key=appearance_obj_features index=type {{pipe}}|
+			
+			/getvar key=appearanceFeaturesPlacements index={{var::index}}|
+			/var key=appearance_obj_features index=placement {{pipe}}|
+			
+			/getvar key=appearanceFeaturesDescriptions index={{var::index}}|
+			/var key=appearance_obj_features index=description {{pipe}}|
+			/addvar key=features_arr {{var::appearance_obj_features}}|
+			/var key=appearance_obj_features {}|
+		:}|
+		/setvar key=appearance_obj index=features {{getvar::features_arr}}|
+		/flushvar features_arr|
+	:}|
+	
+	/ife ((lenghtHeight != '') and (lenghtHeight != 'none')) {:
+		/let key=lenghtHeight_obj {}|
+		/ife ((length != '') and (length != 'none')) {:
+			/var key=lenghtHeight_obj index=length {{getvar::length}}|
+			
+		:}|
+		/ife ((height != '') and (height != 'none')) {:
+			/var key=lenghtHeight_obj index=height {{getvar::height}}|
+			
+		:}|
+		/setvar key=appearance_obj index=size {{var::lenghtHeight_obj}}|
+	:}|
+	
+	/ife ((coveringType != '') and (coveringType != 'none')) {:
+		/let key=covering_obj {}|
+		/var key=covering_obj index=coveringType {{getvar::coveringType}}|
+		/var key=covering_obj index=coveringFront {{getvar::coveringFront}}|
+		/var key=covering_obj index=coveringSidesBack {{getvar::coveringSidesBack}}|
+		/var key=covering_obj index=coveringArmsLegs {{getvar::coveringArmsLegs}}|
+		
+		/setvar key=appearance_obj index=covering {{getvar::covering_obj}}|
+	:}|
+	
+	/setvar key=appearance_obj index=face {{getvar::appearanceFace}}|
+	
+	/let key=hair_obj {}|
+	/var key=hair_obj index=length {{getvar::hairLenght}}|
+	/var key=hair_obj index=style {{getvar::hairStyleSelected}}|
+	/var key=hair_obj index=description {{getvar::appearanceHair}}|
+	/setvar key=appearance_obj index=hair {{var::hair_obj}}|
+	
+	/setvar key=appearance_obj index=eyes {{getvar::appearanceEyes}}|
+	
+	/ife (gender == 'Female') {:
+		/let key=butt {}|
+		/var key=butt index=buttSize {{getvar::buttSize}}|
+		/var key=butt index=buttShape {{getvar::buttShape}}|
+		/var key=butt index=buttFirmness {{getvar::buttFirmness}}|
+		/setvar key=appearance_obj index=butt {{var::butt}}|
+		
+		/let key=pelvis {}|
+		/var key=pelvis index=hipsSize {{getvar::hipsSize}}|
+		/var key=pelvis index=thighsSize {{getvar::thighsSize}}|
+		/setvar key=appearance_obj index=pelvis {{var::pelvis}}|
+		
+		/let key=breasts {}|
+		/var key=breasts index=breastSize {{getvar::breastSize}}|
+		/var key=breasts index=breastShape {{getvar::breastShape}}|
+		/var key=breasts index=breastFirmness {{getvar::breastFirmness}}|
+		/var key=breasts index=description {{getvar::appearanceBreasts}}|
+		
+		/let key=nipples {}|
+		/var key=nipples index=nippleType {{getvar::nippleType}}|
+		/var key=nipples index=nippleProtrusion {{getvar::nippleProtrusion}}|
+		/var key=nipples index=areolaSize {{getvar::areolaSize}}|
+		/var key=nipples index=areolaShape {{getvar::areolaShape}}|
+		/var key=nipples index=description {{getvar::appearanceNipples}}|
+		/var key=breasts index=nipples {{var::nipples}}|
+		
+		/setvar key=appearance_obj index=breasts {{var::breasts}}|
+	:}|
+	/ife ((gender == 'Female') or (futanari == 'Yes')) {:
+		/let key=pussy {}|
+		/var key=pussy index=pussyDepth {{getvar::pussyDepth}}|
+		/var key=pussy index=pussyStretch {{getvar::pussyStretch}}|
+		/var key=pussy index=clitVisibility {{getvar::clitVisibility}}|
+		/var key=pussy index=labiaMajoraFullness {{var::labiaMajoraFullness}}|
+		/var key=pussy index=labiaMajoraOutsideColor {{getvar::labiaMajoraOutsideColor}}|
+		/var key=pussy index=labiaMajoraInsideColor {{getvar::labiaMajoraInsideColor}}|
+		/var key=pussy index=labiaMinoraVisibility {{getvar::labiaMinoraVisibility}}|
+		/var key=pussy index=labiaMinoraOutsideColor {{getvar::labiaMinoraOutsideColor}}|
+		/var key=pussy index=labiaMinoraInsideColor {{getvar::labiaMinoraInsideColor}}|
+		/var key=pussy index=externalVulvaState {{getvar::externalVulvaState}}|
+		/var key=pussy index=pubicHair {{getvar::pussypubicHair}}|
+		/var key=pussy index=description {{getvar::appearancePussy}}|
+		
+		/setvar key=appearance_obj index=pussy {{var::pussy}}|
+	:}|
+	/ife ((gender == 'Male') or (futanari == 'Yes')) {:
+		/let key=cock {}|
+		/var key=cock index=size {{getvar::cockSize}}|
+		/var key=cock index=testicularPosition {{getvar::testicularPosition}}|
+		/var key=cock index=pubicHair {{getvar::cockpubicHair}}|
+		/var key=cock index=description {{getvar::appearanceCock}}|
+		
+		/setvar key=appearance_obj index=cock {{var::cock}}|
+	:}|
+	/ife (futanari == 'Yes') {:
+		/setvar key=appearance_obj index=combined_description {{getvar::appearanceGenitals}}|
+	:}|
+	
+	/setvar key=appearance_obj index=body_description {{getvar::appearanceBody}}|
+	
+	/setvar key=appearance_obj index=anus_description {{getvar::appearanceAnus}}|
+	
+	/ife ((appearanceTraits != 'none') and (appearanceTraits != '')) {:
+		/setvar key=traits_obj []
+		/let key=trait_obj {}|
+		/foreach {{getvar::appearanceTraits}} {:
+			/var key=trait_obj index=name {{var::item}}|
+			/getvar key=appearanceTraitsDetails index={{var::index}}|
+			/var key=trait_obj index=details {{pipe}}|
+			/getvar key=appearanceTraitsEffect index={{var::index}}|
+			/var key=trait_obj index=effect {{pipe}}|
+			
+			/addvar key=traits_obj {{var::trait_obj}}|
+			/var key=trait_obj {}|
+		:}|
+		/setvar key=appearance_obj index=traits {{getvar::traits_obj}}|
+		/fluschvar traits_obj|
+	:}|
+:}|
+
 
 /:"CMC Logic.JEDParse"|
 

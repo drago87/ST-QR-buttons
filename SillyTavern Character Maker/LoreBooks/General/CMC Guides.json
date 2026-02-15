@@ -281,7 +281,12 @@
             "cooldown": 0,
             "delay": 0,
             "triggers": [],
-            "displayIndex": 5
+            "displayIndex": 5,
+            "characterFilter": {
+                "isExclude": false,
+                "names": [],
+                "tags": []
+            }
         },
         "6": {
             "uid": 6,
@@ -324,7 +329,55 @@
             "cooldown": 0,
             "delay": 0,
             "triggers": [],
-            "displayIndex": 6
+            "displayIndex": 6,
+            "characterFilter": {
+                "isExclude": false,
+                "names": [],
+                "tags": []
+            }
+        },
+        "7": {
+            "uid": 7,
+            "key": [],
+            "keysecondary": [],
+            "comment": "Outfit ChatGPT First Message",
+            "content": "Outfit JSON Request Guide\n\nYou will generate one JSON file per outfit.\nEach file follows a fixed structure so outfits are consistent and readable.\n\n---\n\n```\nOverall File Structure\n{\n  \"outfitName\": \"\",\n  \"outfitType\": \"one-piece | two-piece\",\n  \"notes\": \"\",\n\n  \"head\": null,\n  \"accessories\": null,\n  \"makeup\": null,\n  \"neck\": null,\n\n  \"onePiece\": null,\n\n  \"top\": null,\n  \"bottom\": null,\n\n  \"legs\": null,\n  \"shoes\": null,\n\n  \"underwearTop\": null,\n  \"underwearBottom\": null\n}\n```\n\n---\n\n## Outfit Rules\n\n- **One-piece outfits**\n    \n    - Use `onePiece`\n        \n    - Set `top` and `bottom` to `null`\n        \n- **Two-piece outfits**\n    \n    - Use `top` and `bottom`\n        \n    - Set `onePiece` to `null`\n        \n- **Accessories**\n    \n    - `accessories` may be:\n        \n        - `null` (no accessories)\n            \n        - an empty array `[]`\n            \n        - an array of ITEM objects\n            \n- Any unused slot must be set to `null`\n\n---\n\nITEM Object Format\n\nEvery clothing or accessory item uses the same structure:\n```\n{\n  \"name\": \"\",\n  \"description\": \"\",\n  \"material\": \"\",\n  \"fit\": \"\",\n  \"coverage\": \"\",\n  \"closure\": \"\",\n  \"layer\": \"\"\n}\n```\n\n---\n\n## Field Meanings\n\n- **name**  \n    Common name of the item\n    \n- **description**  \n    Visual appearance and how it sits on the body\n    \n- **material**  \n    Fabric or material composition\n    \n- **fit**  \n    How tightly or loosely it fits  \n    Examples: `skin-tight`, `fitted`, `relaxed`, `oversized`\n    \n- **coverage**  \n    What part of the body it covers\n    \n- **closure**  \n    How it stays on the body  \n    Examples: `stretch fabric`, `buttons`, `zipper`, `elastic`, `pressure-sensitive adhesive`\n    \n- **layer**  \n    How it is worn relative to other items  \n    Examples: `base`, `inner`, `outer`, `accessory`\n\n---\n\nExample Minimal Request\n\n“Two-piece outfit. Casual. Sweater and sweatpants.”\n\n---\n\nExample One-Piece Request\n\n“One-piece outfit. Reverse bunny suit. Torso exposed, shoulders and legs covered. Nightclub style.”\n\n---\n\nIf a request is missing details, you will fill them in using reasonable defaults while keeping the JSON valid.",
+            "constant": false,
+            "vectorized": false,
+            "selective": true,
+            "selectiveLogic": 0,
+            "addMemo": true,
+            "order": 100,
+            "position": 0,
+            "disable": false,
+            "ignoreBudget": false,
+            "excludeRecursion": false,
+            "preventRecursion": false,
+            "matchPersonaDescription": false,
+            "matchCharacterDescription": false,
+            "matchCharacterPersonality": false,
+            "matchCharacterDepthPrompt": false,
+            "matchScenario": false,
+            "matchCreatorNotes": false,
+            "delayUntilRecursion": false,
+            "probability": 100,
+            "useProbability": true,
+            "depth": 4,
+            "outletName": "",
+            "group": "",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "scanDepth": null,
+            "caseSensitive": null,
+            "matchWholeWords": null,
+            "useGroupScoring": null,
+            "automationId": "",
+            "role": null,
+            "sticky": 0,
+            "cooldown": 0,
+            "delay": 0,
+            "triggers": [],
+            "displayIndex": 7
         }
     }
 }

@@ -837,6 +837,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -846,6 +855,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 
@@ -952,6 +968,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -961,6 +986,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 /var key=do No|
@@ -1040,6 +1072,15 @@
 		/:"CMC Logic.GenerateWithSelector"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar genOrder|
@@ -1049,6 +1090,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 /var key=do No|
@@ -1119,6 +1167,15 @@
 		/:"CMC Logic.GenerateWithSelector"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar genOrder|
@@ -1128,6 +1185,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 /var key=do No|
@@ -1252,6 +1316,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -1261,6 +1334,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 /var key=do No|
@@ -1394,6 +1474,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -1403,6 +1492,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 /var key=do No|
@@ -1590,6 +1686,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -1599,6 +1704,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 /setvar key=parsedSexualKinks {{noop}}|
@@ -1738,6 +1850,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -1747,6 +1868,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 
@@ -1851,6 +1979,15 @@
 			/:"CMC Logic.GenerateWithPrompt"|
 			/setvar key={{var::variableName}} {{getvar::output}}|
 		:}|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualKinks index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+		
 		/addvar key=dataBaseNames {{var::variableName}}|
 		/flushvar output|
 		/flushvar guidance|
@@ -1860,6 +1997,13 @@
 	:}|
 	/else {:
 		/addvar key=dataBaseNames {{var::variableName}}|
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualKinks index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
 	:}|
 	
 	/setvar key=sexualAbilityNamesProficiencies []|
@@ -1873,6 +2017,15 @@
 			/addvar key=sexualAbilityNamesProficiencies "{{var::item}}"|
 		:}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames sexualAbilityNamesProficiencies|
 	
 	/var key=do No|
@@ -1973,6 +2126,23 @@
 			/:"CMC Logic.GenerateWithPrompt"|
 			/setvar key={{var::variableName}} {{getvar::output}}|
 		:}|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualKinks index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualKinks index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+		
 		/addvar key=dataBaseNames {{var::variableName}}|
 		/flushvar output|
 		/flushvar guidance|
@@ -1982,6 +2152,13 @@
 	:}|
 	/else {:
 		/addvar key=dataBaseNames {{var::variableName}}|
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualKinks index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualKinks index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
 	:}|
 :}|
 /else {:
@@ -1991,6 +2168,30 @@
 	/addvar key=dataBaseNames sexualAbilityProficiencies|
 	/setvar key=sexualAbilityNamesProficiencies None|
 	/addvar key=dataBaseNames sexualAbilityNamesProficiencies|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index=sexualAbilityNames|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=sexualAbilityNames|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index=sexualAbilityNames {{getvar::tempLore}}|
+	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index=sexualAbilityProficiencies|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=sexualAbilityProficiencies|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index=sexualAbilityProficiencies {{getvar::tempLore}}|
+	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualKinks index=sexualAbilityNamesProficiencies|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=sexualAbilityNamesProficiencies|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualKinks index=sexualAbilityNamesProficiencies {{getvar::tempLore}}|
+	:}|
 :}|
 
 
@@ -2973,6 +3174,15 @@
 		/:"CMC Logic.GenerateWithPrompt"|
 		/setvar key={{var::variableName}} {{getvar::output}}|
 	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualItems index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualItems index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
+	
 	/addvar key=dataBaseNames {{var::variableName}}|
 	/flushvar output|
 	/flushvar guidance|
@@ -2982,6 +3192,13 @@
 :}|
 /else {:
 	/addvar key=dataBaseNames {{var::variableName}}|
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualItems index={{var::variableName}}|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key={{var::variableName}}|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualItems index={{var::variableName}} {{getvar::tempLore}}|
+	:}|
 :}|
 
 
@@ -3106,6 +3323,15 @@
 			/:"CMC Logic.GenerateWithPrompt"|
 			/setvar key={{var::variableName}} {{getvar::output}}|
 		:}|
+		
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualItems index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualItems index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
+		
 		/addvar key=dataBaseNames {{var::variableName}}|
 		/flushvar output|
 		/flushvar guidance|
@@ -3115,6 +3341,13 @@
 	:}|
 	/else {:
 		/addvar key=dataBaseNames {{var::variableName}}|
+		/ife (makeLoreBook == 'Yes') {:
+			/getvar key=loreBookSexualItems index={{var::variableName}}|
+			/setvar key=tempLore {{pipe}}|
+			/getvar key={{var::variableName}}|
+			/addvar key=tempLore {{pipe}}|
+			/setvar key=loreBookSexualItems index={{var::variableName}} {{getvar::tempLore}}|
+		:}|
 	:}|
 :}|
 /else {:
@@ -3122,6 +3355,22 @@
 	/addvar key=dataBaseNames sexualItemNames|
 	/setvar key=sexualItemDetails None|
 	/addvar key=dataBaseNames sexualItemDetails|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualItems index=sexualItemNames|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=sexualItemNames|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualItems index=sexualItemNames {{getvar::tempLore}}|
+	:}|
+	
+	/ife (makeLoreBook == 'Yes') {:
+		/getvar key=loreBookSexualItems index=sexualItemDetails|
+		/setvar key=tempLore {{pipe}}|
+		/getvar key=sexualItemDetails|
+		/addvar key=tempLore {{pipe}}|
+		/setvar key=loreBookSexualItems index=sexualItemDetails {{getvar::tempLore}}|
+	:}|
 :}|
 
 

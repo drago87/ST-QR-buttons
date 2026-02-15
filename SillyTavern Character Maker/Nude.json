@@ -1,0 +1,351 @@
+{
+	"Nude": {
+		"outfit_name": "Nude",
+		"headwear": {
+			"type": "string",
+			"slot": "headwear",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing anything on {{getvar::possAdjPronoun}} head."
+		},
+		"accessories": {
+			"type": "array",
+			"slot": "accessory",
+			"items": [
+				{
+					"name": "none",
+					"accessory_slot": "Left Ear",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Ear."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Ear",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Ear."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Nose Bridge",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Nose Bridge."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Nostril",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Nostril."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Nostril",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Nostril."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Septum",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Septum."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Lower Lip",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Lower Lip."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Upper Lip",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Upper Lip."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Tongue",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Tongue."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Neck",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Neck."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Nipple",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Nipple."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Nipple",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Nipple."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Navel",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Navel."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Clitoris",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Clitoris."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Clitoris Hood",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Clitoris Hood."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Wrist",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Wrist."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Wrist",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Wrist."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Hand Thumb",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Hand Thumb."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Hand Index Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Hand Index Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Hand Middle Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Hand Middle Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Hand Ring Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Hand Ring Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Hand Pinky Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Hand Pinky Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Hand Thumb",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Hand Thumb."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Hand Index Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Hand Index Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Hand Middle Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Hand Middle Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Hand Ring Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Hand Ring Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Hand Pinky Finger",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Hand Pinky Finger."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Ankle",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Ankle."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Ankle",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Ankle."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Foot Big Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Foot Big Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Foot Second Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Foot Second Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Foot Middle Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Foot Middle Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Foot Fourth Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Foot Fourth Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Left Foot Little Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Left Foot Little Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Foot Big Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Foot Big Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Foot Second Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Foot Second Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Foot Middle Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Foot Middle Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Foot Fourth Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Foot Fourth Toe."
+				},
+				{
+					"name": "none",
+					"accessory_slot": "Right Foot Little Toe",
+					"description": "{{getvar::firstName}} is not wearing an accessory on {{getvar::possAdjPronoun}} Right Foot Little Toe."
+				}
+			]
+		},
+		"makeup": {
+			"type": "array",
+			"slot": "makeup",
+			"items": [
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Eyeshadow",
+					"description": "{{getvar::firstName}} is not wearing any eyeshadow."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Eyeliner",
+					"description": "{{getvar::firstName}} is not wearing any eyeliner."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Mascara",
+					"description": "{{getvar::firstName}} is not wearing any mascara."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Eyebrows",
+					"description": "{{getvar::firstName}} has not applied any product to {{getvar::possAdjPronoun}} eyebrows."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Lipstick",
+					"description": "{{getvar::firstName}} is not wearing any lipstick or lip color."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Lip Liner",
+					"description": "{{getvar::firstName}} is not wearing any lip liner."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Blush",
+					"description": "{{getvar::firstName}} is not wearing any blush on {{getvar::possAdjPronoun}} cheeks."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Foundation",
+					"description": "{{getvar::firstName}} is not wearing any foundation or base makeup."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Face Paint",
+					"description": "{{getvar::firstName}} does not have any paint or markings on {{getvar::possAdjPronoun}} face."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Left Hand Fingernails",
+					"description": "{{getvar::firstName}} is not wearing any polish on {{getvar::possAdjPronoun}} left fingernails."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Right Hand Fingernails",
+					"description": "{{getvar::firstName}} is not wearing any polish on {{getvar::possAdjPronoun}} right fingernails."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Left Foot Toenails",
+					"description": "{{getvar::firstName}} is not wearing any polish on {{getvar::possAdjPronoun}} left toenails."
+				},
+				{
+					"name": "none",
+					"permanent": "No",
+					"makeup_slot": "Right Foot Toenails",
+					"description": "{{getvar::firstName}} is not wearing any polish on {{getvar::possAdjPronoun}} right toenails."
+				}
+			],
+		},
+		"neckwear": {
+			"type": "string",
+			"slot": "neckwear",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing anything around {{getvar::possAdjPronoun}} neck that is not an accessory."
+		},
+		"outfit_type": "one",
+		"mainwear_full": {
+			"type": "string",
+			"slot": "mainwear_full",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing a **outer layer** of clothing on {{getvar::possAdjPronoun}}."
+		},
+		"mainwear_top": {
+			"type": "string",
+			"slot": "mainwear_top",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing a **outer layer** of clothing on {{getvar::possAdjPronoun}} top half."
+		},
+		"mainwear_bottom": {
+			"type": "string",
+			"slot": "mainwear_bottom",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing a **outer layer** of clothing on {{getvar::possAdjPronoun}} bottom half."
+		},
+		"legwear": {
+			"type": "string",
+			"slot": "legwear",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing any legwear."
+		},
+		"socks": {
+			"type": "string",
+			"slot": "socks",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing any socks."
+		},
+		"shoes": {
+			"type": "string",
+			"slot": "shoes",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing any shoes."
+		},
+		"underwear_top": {
+			"type": "string",
+			"slot": "underwear top",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing any underwear on {{getvar::possAdjPronoun}} upper body."
+		},
+		"underwear_bottom": {
+			"type": "string",
+			"slot": "underwear bottom",
+			"name": "none",
+			"description": "{{getvar::firstName}} is not wearing any underwear on {{getvar::possAdjPronoun}} lower body."
+		}
+	}
+}

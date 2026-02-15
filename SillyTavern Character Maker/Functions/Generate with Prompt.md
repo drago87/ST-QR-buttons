@@ -14,6 +14,8 @@
 /let key=instructionsStarter {{noop}}|
 /let key=instructionsStopper {{noop}}|
 /let key=anatomyPrompt {{noop}}|
+/let key=rolePr {{noop}}|
+/let key=outputTr {{noop}}|
 
 /findentry field=comment file="CMC Static Variables" "Need Stopper"|
 /var key=wi_uid {{pipe}}|
@@ -126,6 +128,36 @@
 /let as=array key=contextKey_f {{pipe}}|
 /getvar key=genSettings index=extraContext|
 /let as=array key=extraContext_f {{pipe}}|
+
+/ife ('role' in promptOrder) {:
+	/var key=find "Model Role"|
+	/findentry field=comment file="CMC Prompt {{getglobalvar::model}}" "{{var::find}}"|
+	/var key=wi_uid {{pipe}}|
+	/getentryfield field=comment file="CMC Prompt {{getglobalvar::model}}" {{var::wi_uid}}|
+	/let key=testRole {{pipe}}|
+	/ife (find == testRole) {:
+		/getentryfield field=content file="CMC Prompt {{getglobalvar::model}}" {{var::wi_uid}}|
+		/var key=testRole {{pipe}}|
+		/ife (testRole != '') {:
+			/var key=rolePr {{var::testRole}}|
+		:}|
+	:}|
+:}|
+
+/ife ('output trigger' in promptOrder) {:
+	/var key=find "Output Trigger"|
+	/findentry field=comment file="CMC Prompt {{getglobalvar::model}}" "{{var::find}}"|
+	/var key=wi_uid {{pipe}}|
+	/getentryfield field=comment file="CMC Prompt {{getglobalvar::model}}" {{var::wi_uid}}|
+	/let key=testOutputTr {{pipe}}|
+	/ife (find == testOutputTr) {:
+		/getentryfield field=content file="CMC Prompt {{getglobalvar::model}}" {{var::wi_uid}}|
+		/var key=testOutputTr {{pipe}}|
+		/ife (testOutputTr != '') {:
+			/var key=outputTr {{var::testOutputTr}}|
+		:}|
+	:}|
+:}|
 
 
 /ife ( useContext_f == 'Yes') {:
@@ -446,7 +478,84 @@
 			/getentryfield field=content file="{{var::wi_book_f}}" {{var::wi_uid}}|
 			/var key=instruct [{{var::instructionsStarter}}{{pipe}}{{var::instructionsStopper}}]|
 			/echo Generatig {{var::wi_book_key_f}} {{var::i}}/{{var::genAmount_f}}|
-			/genraw "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}"|
+			/len {{getglobalvar::promptOrder}}|
+			/let key=promptOrderLen {{pipe}}|
+			/ife ((promptOrder == '') or (promptOrderLen < 4)) {:
+				/setglobalvar key=promptOrder ["contexts", "examples", "task", "instructions"]|
+				/popup "Default order for the prompt set. If you want to change it press the 'CMC Menu' button.{{newline}}Default order: contexts, examples, task, instructions"|
+			:}|
+			/setvar key=promptToRun {{noop}}|
+			/foreach {{getglobalvar::promptOrder}} {:
+				/ife ((rolePr != '') and (item == 'role')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<role>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::role}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</role>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((context != '') and (item == 'contexts')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<context>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::context}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</context>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((examples != '') and (item == 'examples')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<examples>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::examples}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</examples>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((task != '') and (item == 'task')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<task>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::task}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</task>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((instruct != '') and (item == 'instructions')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<instructions>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::instruct}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}<instructions>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((outputTr != '') and (item == 'output trigger')) {:
+					/addvar key=promptToRun {{var::outputTr}}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+			:}|
+			//genraw "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}"|
+			/genraw "{{getvar::promptToRun}}"|
+			/re-replace find="/<think>[\s\S]*?<\/think>\s*/g" replace="" {{pipe}}|
 			/var key=t {{pipe}}|
 			/ife (debug == 'Yes') {:
 				/setvar key="00 Genraw" "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}"|
@@ -526,18 +635,177 @@
 		/getentryfield field=content file="{{var::wi_book_f}}" {{var::wi_uid}}|
 		/var key=instruct [{{var::instructionsStarter}}{{pipe}}{{var::instructionsStopper}}]|
 		/ife (wi_book_key_f != 'First Message') {:
-			/genraw "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}"|
+			
+			/len {{getglobalvar::promptOrder}}|
+			/let key=promptOrderLen {{pipe}}|
+			/ife ((promptOrder == '') or (promptOrderLen < 4)) {:
+				/setglobalvar key=promptOrder ["contexts", "examples", "task", "instructions"]|
+				/popup "Default order for the prompt set. If you want to change it press the 'CMC Menu' button.{{newline}}Default order: contexts, examples, task, instructions"|
+			:}|
+			/setvar key=promptToRun {{noop}}|
+			/foreach {{getglobalvar::promptOrder}} {:
+				/ife ((rolePr != '') and (item == 'role')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<role>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::role}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</role>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((context != '') and (item == 'contexts')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<context>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::context}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</context>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((examples != '') and (item == 'examples')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<examples>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::examples}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</examples>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((task != '') and (item == 'task')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<task>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::task}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</task>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((instruct != '') and (item == 'instructions')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<instructions>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::instruct}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}<instructions>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((outputTr != '') and (item == 'output trigger')) {:
+					/addvar key=promptToRun {{var::outputTr}}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+			:}|
+			//genraw "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}"|
+			/genraw "{{getvar::promptToRun}}"|
+			/re-replace find="/<think>[\s\S]*?<\/think>\s*/g" replace="" {{pipe}}|
 			/var key=t {{pipe}}|
 		:}|
 		/elseif (wi_book_key_f == 'First Message') {:
-			/messages names=off 0|
+			/messages names=off 1|
 			/setvar key=fullCharacterSheet {{pipe}}|
 			/re-replace find="/--FirstName--/g" replace="{{getvar::firstName}}" {{getvar::fullCharacterSheet}}|
 			/setvar key=fullCharacterSheet {{pipe}}|
-			/genraw "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}{{newline}}{{newline}}## [CHARACTER_SHEET_REFERENCE]
+			
+			/len {{getglobalvar::promptOrder}}|
+			/let key=promptOrderLen {{pipe}}|
+			/ife ((promptOrder == '') or (promptOrderLen < 4)) {:
+				/setglobalvar key=promptOrder ["contexts", "examples", "task", "instructions"]|
+				/popup "Default order for the prompt set. If you want to change it press the 'CMC Menu' button.{{newline}}Default order: contexts, examples, task, instructions"|
+			:}|
+			/setvar key=promptToRun {{noop}}|
+			/foreach {{getglobalvar::promptOrder}} {:
+				/ife ((rolePr != '') and (item == 'role')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<role>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::role}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</role>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((context != '') and (item == 'contexts')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<context>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::context}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</context>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((examples != '') and (item == 'examples')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<examples>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::examples}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</examples>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((task != '') and (item == 'task')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<task>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::task}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}</task>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((instruct != '') and (item == 'instructions')) {:
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "<instructions>{{newline}}"|
+					:}|
+					/addvar key=promptToRun {{var::instruct}}|
+					/ife (xmlTags == 'Yes') {:
+						/addvar key=promptToRun "{{newline}}<instructions>"|
+					:}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+				/elseif ((outputTr != '') and (item == 'output trigger')) {:
+					/addvar key=promptToRun {{var::outputTr}}|
+					/ife (index < promptOrderLen) {:
+						/addvar key=promptToRun {{newline}}{{newline}}|
+					:}|
+				:}|
+			:}|
+			//genraw "{{var::context}}{{var::examples}}{{newline}}{{newline}}{{var::task}}{{newline}}{{newline}}{{var::instruct}}{{newline}}{{newline}}## [CHARACTER_SHEET_REFERENCE]
 Below is the full character sheet for {{getvar::firstName}}. Use it to understand {{getvar::subjPronoun}}’s personality, tone, and behavioral cues. This is reference only — do not quote or summarize it.
 
 {{getvar::fullCharacterSheet}}"|
+			/genraw "{{getvar::promptToRun}}{{newline}}{{newline}}## [CHARACTER_SHEET_REFERENCE]
+Below is the full character sheet for {{getvar::firstName}}. Use it to understand {{getvar::subjPronoun}}’s personality, tone, and behavioral cues. This is reference only — do not quote or summarize it.
+
+{{getvar::fullCharacterSheet}}"|
+			/re-replace find="/<think>[\s\S]*?<\/think>\s*/g" replace="" {{pipe}}|
 			/var key=t {{pipe}}|
 		:}|
 		/re-replace find="/^[;\s]+/g" replace="" {{var::t}}|
@@ -757,6 +1025,7 @@ Below is the full character sheet for {{getvar::firstName}}. Use it to understan
 				/getentryfield field=content file="CMC Information {{getglobalvar::model}}" {{var::wi_uid}}|
 				/let key=infoPrompt {{pipe}}|
 				/genraw "{{var::infoPrompt}}{{newline}}{{newline}}{{var::mainPrompt}}"|
+				/re-replace find="/<think>[\s\S]*?<\/think>\s*/g" replace="" {{pipe}}|
 				/setvar key=guideTemp {{pipe}}|
 				/setvar key=guidance "**Kink Guidance Input:** [{{getvar::guideTemp}}]{{newline}}This reflects a core kink or arousal theme relevant to the character. At least one kink type in the output must reflect this input — directly or as a clear reinterpretation. [**IMPORTANT** Start with this!]"|
 			:}|

@@ -125,6 +125,34 @@
 					"<phrases implying control>"
 				]
 			},
+			"second_person_actor": {
+				"prose_focus": "<intent | physical effort | control>",
+				"sentence_style": "<short and forceful | deliberate | restrained>",
+				"perspective_emphasis": "actor-centric",
+				"recommended_tense": "<present | past>",
+				"descriptive_priority": [
+					"<muscle engagement>",
+					"<decision and follow-through>",
+					"<impact or result>"
+				],
+				"avoid_phrases": [
+					"<phrases implying passivity>"
+				]
+			},
+			"second_person_receiver": {
+				"prose_focus": "<sensation | shock | emotional response>",
+				"sentence_style": "<fragmented | reactive | breathy>",
+				"perspective_emphasis": "body-centric",
+				"recommended_tense": "<present>",
+				"descriptive_priority": [
+					"<sudden sensation>",
+					"<loss or shift of balance>",
+					"<emotional reaction>"
+				],
+				"avoid_phrases": [
+					"<phrases implying control>"
+				]
+			},
 			"third_person_observer": {
 				"prose_focus": "<motion | cause-and-effect | interaction>",
 				"sentence_style": "<clear | cinematic | descriptive>",
@@ -145,17 +173,17 @@
 			"<verbs or phrases that imply this action>"
 			// (examples — add as many as needed)
 		],
-		
-		"sexual_extension": {
-			// (If you are making a sexual action replace this with the sexual extension template)
+		"extensions": {
+			"sexual_extension": {
+				// (If you are making a sexual action replace this with the sexual extension template)
+			},
+			"combat_extension": {
+				// (If you are making a combat action replace this with the combat extension template)
+			},
+			"social_extension": {
+				// (If you are making a social action replace this with the social extension template)
+			}
 		},
-		"combat_extension": {
-			// (If you are making a combat action replace this with the combat extension template)
-		},
-		"social_extension": {
-			// (If you are making a social action replace this with the social extension template)
-		},
-		
 		"examples": {
 			"first_person_actor": [
 				{
@@ -164,6 +192,18 @@
 				}
 			],
 			"first_person_receiver": [
+				{
+					"consent": "<true | false | ambiguous>",
+					"description": "<example prose using placeholder conventions>"
+				}
+			],
+			"second_person_actor": [
+				{
+					"consent": "<true | false | ambiguous>",
+					"description": "<example prose using placeholder conventions>"
+				}
+			],
+			"secind_person_receiver": [
 				{
 					"consent": "<true | false | ambiguous>",
 					"description": "<example prose using placeholder conventions>"

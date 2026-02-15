@@ -87,13 +87,18 @@
 	/setvar key=ethnicity {{noop}}|
 :}|
 
-
 /ife (gender == 'Female') {:
 	/setvar key=subjPronoun she|
 	/setvar key=objPronoun her|
 	/setvar key=possAdjPronoun her|
 	/setvar key=possPronoun hers|
 	/setvar key=reflexivePronoun herself|
+	/setvar key=isAre is|
+	/setvar key=hasHave has|
+	/setvar key=verbSees sees|
+	/setvar key=verbFeels feels|
+	/setvar key=verbPrefers prefers|
+	/setvar key=verbTakes takes|
 :}|
 /elseif (gender == 'Male') {:
 	/setvar key=subjPronoun he|
@@ -101,6 +106,12 @@
 	/setvar key=possAdjPronoun his|
 	/setvar key=possPronoun his|
 	/setvar key=reflexivePronoun himself|
+	/setvar key=isAre is|
+	/setvar key=hasHave has|
+	/setvar key=verbSees sees|
+	/setvar key=verbFeels feels|
+	/setvar key=verbPrefers prefers|
+	/setvar key=verbTakes takes|
 :}|
 /else {:
 	/setvar key=subjPronoun they|
@@ -108,4 +119,10 @@
 	/setvar key=possAdjPronoun their|
 	/setvar key=possPronoun theirs|
 	/setvar key=reflexivePronoun themself|
+	/setvar key=isAre are|
+	/setvar key=hasHave have|
+	/setvar key=verbSees see|
+	/setvar key=verbFeels feel|
+	/setvar key=verbPrefers prefer|
+	/setvar key=verbTakes take|
 :}|

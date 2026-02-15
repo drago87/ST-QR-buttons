@@ -2,7 +2,7 @@
 {
 	"schema_type": "clothing_length_scale",
 	"instruction": "Provide clothing coverage and length metadata with full schema. This template is applicable to any garment type, including skirts, dresses, pants, socks, gloves, etc.",
-	"input": "Define the clothing length and coverage scale for [GARMENT]."
+	"input": "Define the clothing length and coverage scale for [GARMENT].",
 	"placeholder_conventions": {
 		"purpose": "Allow flexible, generic references for garment types and coverage levels.",
 		"allowed_placeholders": [
